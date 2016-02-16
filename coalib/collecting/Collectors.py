@@ -45,10 +45,11 @@ def icollect(file_paths):
 
     for file_path in file_paths:
         for match in iglob(file_path):
-            yield match
+            yield match, file_path
 
 
-def collect_files(file_paths, ignored_file_paths=None, limit_file_paths=None):
+def collect_files(file_paths, log_printer, ignored_file_paths=None,
+                  limit_file_paths=None):
     """
     Evaluate globs in file paths and return all matching files
 
@@ -66,11 +67,19 @@ def collect_files(file_paths, ignored_file_paths=None, limit_file_paths=None):
     else:
         limit_fnmatch = lambda x: True  # Always in the limit_files
     valid_files = list(filter(
-        lambda x: (os.path.isfile(x) and not ignore_fnmatch(x) and
-                   limit_fnmatch(x)),
+        lambda x: (os.path.isfile(x[0]) and not ignore_fnmatch(x[0]) and
+                   limit_fnmatch(x[0])),
         icollect(file_paths)))
 
-    return valid_files
+    if valid_files:
+        collected_files, file_globs_with_files = zip(*valid_files)
+    else:
+        collected_files, file_globs_with_files = [], []
+    empty_file_globs = set(file_paths) - set(file_globs_with_files)
+    for glob in empty_file_globs:
+        log_printer.warn("No files matching '{}' were found.".format(glob))
+
+    return list(collected_files)
 
 
 def collect_dirs(dir_paths, ignored_dir_paths=None):
@@ -86,9 +95,13 @@ def collect_dirs(dir_paths, ignored_dir_paths=None):
     else:
         ignore_fnmatch = lambda x: False  # Never ignored
     valid_dirs = list(filter(
-        lambda x: os.path.isdir(x) and not ignore_fnmatch(x),
+        lambda x: os.path.isdir(x[0]) and not ignore_fnmatch(x[0]),
         icollect(dir_paths)))
-    return valid_dirs
+    if valid_dirs:
+        collected_dirs, dummy = zip(*valid_dirs)
+        return list(collected_dirs)
+    else:
+        return []
 
 
 @yield_once
@@ -103,7 +116,8 @@ def icollect_bears(bear_dirs, bear_globs, kinds, log_printer):
     :return:            iterator that yields a tuple with bear class and
                         which bear_glob was used to find that bear class.
     """
-    for bear_dir in filter(os.path.isdir, icollect(bear_dirs)):
+    for bear_dir, dir_glob in filter(lambda x: os.path.isdir(x[0]),
+                                     icollect(bear_dirs)):
         for bear_glob in bear_globs:
             for matching_file in iglob(
                     os.path.join(bear_dir, bear_glob + '.py')):
