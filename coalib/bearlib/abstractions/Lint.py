@@ -89,7 +89,9 @@ class Lint(Bear):
 
         config_file = self.generate_config_file()
         command = self._create_command(filename, config_file=config_file)
-
+        print(command)
+        with open(config_file) as f:
+            print(f.read())
         stdin_input = "".join(file) if self.use_stdin else ""
         stdout_output, stderr_output = run_shell_command(command,
                                                          stdin=stdin_input)
