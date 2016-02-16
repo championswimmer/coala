@@ -1,0 +1,4 @@
+#!/bin/sh
+
+alias run_coala="coala-ci --find-config -S autoapply=false"
+run_coala
