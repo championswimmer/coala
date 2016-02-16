@@ -28,7 +28,7 @@ default_actions = PEP8Bear: ApplyPatchAction
 bears = LineLengthBear
 
 [DOCS]
-bears = SpaceConsistencyBear
+bears = SpaceConsistencyBear, LineLengthBear
 
 files = docs/**/*.rst
 default_actions = SpaceConsistencyBear: ApplyPatchAction

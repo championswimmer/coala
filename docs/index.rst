@@ -49,6 +49,8 @@ Welcome to the coala documentation!
 
    List of Modules<API/modules>
 
+.. Start ignoring LineLengthBear
+
 ::
 
                                                          .o88Oo._
@@ -66,6 +68,7 @@ Welcome to the coala documentation!
       ,d8,_    _,d8,   ,d8' d8,   ,d8b,,d8b,_ ,d8,   ,d8b,       Y           ,o8P
     ooP""Y8888PP*"Y8888P"   "Y8888P"`Y88P'"Y88P"Y8888P"`Y8            oooo888P"
 
+.. Stop ignoring LineLengthBear
 
 What is coala?
 --------------

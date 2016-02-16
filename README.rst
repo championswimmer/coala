@@ -66,7 +66,8 @@ GETTING INVOLVED
 ================
 
 If you want to contribute to coala, please take a look at the `Getting
-Involved Information <http://coala.readthedocs.org/en/latest/Getting_Involved/README.html>`__.
+Involved Information
+<http://coala.readthedocs.org/en/latest/Getting_Involved/README.html>`__.
 
 We appreciate any help!
 
