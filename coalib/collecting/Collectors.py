@@ -155,7 +155,7 @@ def collect_bears(bear_dirs, bear_globs, kinds, log_printer):
 
     empty_bear_globs = set(bear_globs) - set(bear_globs_with_bears)
     for glob in empty_bear_globs:
-        log_printer.warn("No bears were found matching '{}'.".format(glob))
+        log_printer.warn("No bears matching '{}' were found.".format(glob))
 
     return bears_found
 

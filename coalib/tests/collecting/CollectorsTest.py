@@ -184,8 +184,8 @@ class CollectBearsTest(unittest.TestCase):
                                            ["invalid kind"],
                                            self.log_printer), ([],))
             self.assertRegex(sio.getvalue(),
-                             ".*\\[WARNING\\].*No bears were found matching "
-                             "'invalid_name'.\n")
+                             ".*\\[WARNING\\].*No bears matching "
+                             "'invalid_name' were found.\n")
 
         self.assertEqual(collect_bears(["invalid_paths"],
                                        ["invalid_name"],
