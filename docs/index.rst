@@ -9,13 +9,13 @@ Welcome to the coala documentation!
 .. toctree::
    :caption: Home
    :hidden:
-   
+
    Welcome <self>
 
 .. toctree::
    :caption: For Users
    :hidden:
-   
+
    Installation <Users/Install>
    Tutorial <Users/Tutorial>
    Writing Bears <Users/Writing_Bears>
@@ -27,7 +27,7 @@ Welcome to the coala documentation!
 .. toctree::
    :caption: Getting Involved
    :hidden:
-   
+
    Introduction <Getting_Involved/README>
    Review <Getting_Involved/Review>
    Codestyle <Getting_Involved/Codestyle>
@@ -40,13 +40,13 @@ Welcome to the coala documentation!
 .. toctree::
    :caption: General Developer Information
    :hidden:
-   
+
    A Hitchhiker's Guide to Git (1): Genesis <General_Dev_Info/git_tutorial_1>
 
 .. toctree::
    :caption: API Documentation
    :hidden:
-   
+
    List of Modules<API/modules>
 
 ::
